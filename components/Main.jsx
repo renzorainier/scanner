@@ -28,7 +28,7 @@ const MainComponent = () => {
       case "generate":
         return <Generate onBackButtonClick={handleBackButtonClick} />;
         case "create":
-          return <Generate onBackButtonClick={handleBackButtonClick} />;
+          return < StudentCollection onBackButtonClick={handleBackButtonClick} />;
 
       // render other components as needed
       default:
