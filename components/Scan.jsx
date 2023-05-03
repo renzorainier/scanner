@@ -193,7 +193,7 @@ function Scan() {
       const studentInfo = await markStudentPresent(code);
       if (studentInfo) {
         const { name, time } = studentInfo;
-        setData(`${name}, scanned at: ${time}`);
+        setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
       }
     } catch (e) {
