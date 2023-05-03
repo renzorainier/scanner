@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 
-import TodayAttendance from "./TodayView";
-import PastAttendance from "./PastView";
-import Greeting from "./Dash";
-import Calculator from "./Sample";
 import Pass from "./Pass";
-import Generate from "./Generate";
-import TeamCarousel from "./Members";
-import About from "./About";
-import StudentCollection from "./Create";
+
 
 const MainComponent = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -25,39 +18,16 @@ const MainComponent = () => {
     switch (currentComponent) {
       case "pass":
         return <Pass onBackButtonClick={handleBackButtonClick} />;
-      case "generate":
-        return <Generate onBackButtonClick={handleBackButtonClick} />;
-        case "create":
-          return < StudentCollection onBackButtonClick={handleBackButtonClick} />;
 
       // render other components as needed
       default:
         return (
-          <div className="flex justify-center  h-screen">
-            <div className="mt-4 ax-w-screen-lg mx-auto">
-              <div className="greeting-container">{/* <Greeting /> */}</div>
-
-              <div className="ml-5 text-white mr-5 mt-3  gap-4">
-
-                <button
-                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
-                  onClick={() => handleButtonClick("pass")}
-                >
-                  Scan
-                </button>
-                <button
-                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
-                  onClick={() => handleButtonClick("generate")}
-                >
-                  QR Code
-                </button>
-                <button
-                  className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
-                  onClick={() => handleButtonClick("create")}
-                >
-                  Update
-                </button>
-              </div>
+          <div className="flex justify-center pt-5 items-center">
+            <div
+              className="w-full rounded-lg mx-auto"
+              style={{ maxWidth: "90%" }}
+            >
+              <Pass />
             </div>
           </div>
         );
@@ -69,23 +39,25 @@ const MainComponent = () => {
 
 export default MainComponent;
 
-
-
-    {/* <button
+{
+  /* <button
                   className="bg-blue-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                   onClick={() => handleButtonClick("today")}
                   style={{ animation: "slide-from-left 1s ease forwards" }}
                 >
                   Attendance
-                </button> */}
+                </button> */
+}
 
-                {/* <button
+{
+  /* <button
                   className="bg-violet-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300 font-bold text-xl py-10 rounded-lg shadow-lg"
                   onClick={() => handleButtonClick("about")}
                   style={{ animation: "slide-from-right 1s ease forwards" }}
                 >
                   About
-                </button> */}
+                </button> */
+}
 
 // <button className="bg-white font-bold text-xl py-10 rounded-lg " onClick={() => handleButtonClick("create")}>
 // Create

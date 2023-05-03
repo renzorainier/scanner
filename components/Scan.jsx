@@ -9,6 +9,14 @@ function Scan() {
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
+  //time verification
+  const currentTime = new Date().toLocaleTimeString();
+  const startTime = "04:00:00";
+  const endTime = "8:00:00";
+
+  const isWithinTimeRange =
+    currentTime >= startTime && currentTime <= endTime;
+
   const mappingTable = {
     Z: "0",
     X: "1",
@@ -295,6 +303,7 @@ function Scan() {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center">
+    {isWithinTimeRange ? (
       <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
         <QrReader
           onResult={async (result) => {
@@ -328,235 +337,15 @@ function Scan() {
           </ul>
         </div>
       </div>
-    </div>
-  );
+    ) : (
+      <p className="text-xl font-bold text-red-500">
+        QR scanner only works between {startTime} and {endTime}
+      </p>
+    )}
+  </div>
+);
 
 }
 
 export default Scan;
 
-// const markStudentPresent = async (code) => {
-//   const [strand, section, id, lrn] = code.split("-");
-//   const sectionRef = doc(db, strand, section);
-//   const sectionDoc = await getDoc(sectionRef);
-//   if (sectionDoc.exists()) {
-//     const sectionData = sectionDoc.data();
-//     const studentKeys = Object.keys(sectionData).filter(
-//       (key) => key.startsWith(id) && key.endsWith("lastScan")
-//     );
-//     if (studentKeys.length > 0) {
-//       const studentData = {};
-//       studentKeys.forEach((key) => {
-//         studentData[key] = new Date();
-//       });
-//       const currentDay = new Date().toLocaleDateString("en-US", {
-//         weekday: "long",
-//       });
-
-//       // Check student's attendance status and update it
-//       let attendanceStatus = "";
-//       let topNumber = "";
-
-//       const scheduleData = schedules[strand][section][currentDay];
-
-//       const startTimeParts = scheduleData.startTime.split(":");
-//       const classStartTime = new Date();
-//       classStartTime.setHours(parseInt(startTimeParts[0]));
-//       classStartTime.setMinutes(parseInt(startTimeParts[1]));
-//       classStartTime.setSeconds(parseInt(startTimeParts[2]));
-
-//       const scanTime = new Date();
-//       const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
-//       if (timeDifference < -300000) {
-//         // Student is early (5 minutes before class start time)
-//         attendanceStatus = "early";
-//         const badgeRef = doc(db, "badge", "tops");
-//         const badgeDoc = await getDoc(badgeRef);
-//         if (badgeDoc.exists()) {
-//           const badgeData = badgeDoc.data();
-//           let i = 1;
-//           while (i <= 10) {
-//             const fieldName = `${strand}_${section}_Top${i}`;
-//             if (badgeData[fieldName] === true) {
-//               topNumber = `Top${i}`;
-//               break;
-//             }
-//             i++;
-//           }
-//         }
-//       } else if (timeDifference > 600000) {
-//         // Student is late (more than 10 minutes after class start time)
-//         attendanceStatus = "late";
-//       } else {
-//         // Student is on time (within 10 minutes of class start time)
-//         attendanceStatus = "ontime";
-//       }
-
-//       const dayOfWeek = currentDay.substring(0, 3);
-//       let dayCode;
-//       switch (dayOfWeek) {
-//         case "Mon":
-//           dayCode = "A";
-//           break;
-//         case "Tue":
-//           dayCode = "B";
-//           break;
-//         case "Wed":
-//           dayCode = "C";
-//           break;
-//         case "Thu":
-//           dayCode = "D";
-//           break;
-//         case "Fri":
-//           dayCode = "E";
-//           break;
-//         default:
-//           dayCode = "X"; // Use "X" as the default code if the day is not recognized
-//       }
-
-//       const lastScanField = `${id}${dayCode}`;
-//       const attendanceStatusField = `${id}${dayCode}s`;
-
-//       studentData[lastScanField] = new Date();
-//       studentData[attendanceStatusField] = attendanceStatus;
-//       studentData[`${id}present`] = true;
-//       studentData[`${id}status`] = attendanceStatus;
-//       studentData[`${id}dif`] = timeDifference;
-
-//       if (topNumber !== "") {
-//         studentData[`${id}badge`] = topNumber;
-//       }
-
-// studentData[`${id}A`] = scanTime;
-// studentData[`${id}As`] = attendanceStatus;
-// studentData[`${id}B`] = scanTime;
-// studentData[`${id}Bs`] = attendanceStatus;
-// studentData[`${id}C`] = scanTime;
-// studentData[`${id}Cs`] = attendanceStatus;
-// studentData[`${id}D`] = scanTime;
-// studentData[`${id}Ds`] = attendanceStatus;
-// studentData[`${id}E`] = scanTime;
-// studentData[`${id}Es`] = attendanceStatus;
-
-// const handleMarkPresent = async (strand, section, id) => {
-//   // Get student data from Firestore
-//   const studentRef = doc(db, "strands", strand, section, id);
-//   const docSnapshot = await getDoc(studentRef);
-
-//   if (docSnapshot.exists()) {
-//     const studentData = docSnapshot.data();
-
-//     // Check student's attendance status and update it
-//     let attendanceStatus = "";
-//     let scheduleRef;
-
-//     if (studentData.day && studentData.start_time) {
-//       scheduleRef = doc(db, "schedules", strand, section, studentData.day);
-//     } else {
-//       console.log(`No day or start time found for student ${id}`);
-//       return undefined;
-//     }
-
-//     const scheduleSnapshot = await getDoc(scheduleRef);
-
-//     if (scheduleSnapshot.exists()) {
-//       const scheduleData = scheduleSnapshot.data();
-//       const studentSchedule = scheduleData[strand];
-//       const studentScheduleTime = studentSchedule[id];
-//       const classStartTime = new Date(studentScheduleTime.start_time);
-//       const scanTime = new Date();
-//       const timeDifference = scanTime.getTime() - classStartTime.getTime();
-
-//       if (timeDifference < -300000) {
-//         // Student is early (5 minutes before class start time)
-//         attendanceStatus = "early";
-//       } else if (timeDifference >= -300000 && timeDifference <= 600000) {
-//         // Student is on time (within 5 minutes of class start time)
-//         attendanceStatus = "on time";
-//       } else {
-//         // Student is late (more than 5 minutes after class start time)
-//         attendanceStatus = "late";
-//       }
-//     }
-
-//     if (!studentData.present) {
-//       await setDoc(
-//         studentRef,
-//         { present: true, lastScan: new Date(), attendanceStatus },
-//         { merge: true }
-//       );
-//       console.log(`Student ${id} marked as present`);
-//     } else {
-//       console.log(`Student ${id} is already marked as present`);
-//     }
-
-//     const timeString = studentData.lastScan
-//       .toDate()
-//       .toLocaleTimeString("en-US", {
-//         hour: "numeric",
-//         minute: "numeric",
-//         hour12: true,
-//       });
-
-//     return {
-//       name: studentData.name,
-//       time: timeString,
-//     };
-//   } else {
-//     console.log(`No student found with ID ${id}`);
-//     return undefined;
-//   }
-// };
-
-// '1B': {
-//   'Monday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Tuesday': {
-//     'startTime': '18:00:00',
-//   },
-//   'Wednesday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Thursday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Friday': {
-//     'startTime': '08:00:00',
-//   },
-// },
-// '1C': {
-//   'Monday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Tuesday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Wednesday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Thursday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Friday': {
-//     'startTime': '08:00:00',
-//   },
-// },
-// '1D': {
-//   'Monday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Tuesday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Wednesday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Thursday': {
-//     'startTime': '08:00:00',
-//   },
-//   'Friday': {
-//     'startTime': '08:00:00',
-//   },
-// },
