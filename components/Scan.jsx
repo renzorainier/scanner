@@ -337,20 +337,20 @@ function Scan() {
                   .join("");
                 setLastScanned(code);
                 handleMarkPresent(decodedCode);
-                console.log(decodedCode);
-                console.log(result);
+                // console.log(decodedCode);
+                // console.log(result);
               }
             }
           }}
           constraints={{ facingMode: "environment" }}
           style={{ width: "100%", height: "100%" }}
         />
-      <div className="flex flex-col items-center justify-center mt-6">
-  <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
-  <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
-    <p className="text-2xl text-blue-600 font-semibold">{data}</p>
-  </div>
-</div>
+        <div className="flex flex-col items-center justify-center mt-6">
+          <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
+          <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
+            <p className="text-base text-blue-600 font-semibold">{data}</p>
+          </div>
+        </div>
 
         <div className="flex flex-col items-center justify-center mt-8">
           <h1 className="text-3xl font-semibold">
