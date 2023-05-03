@@ -9,14 +9,6 @@ function Scan() {
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
 
-  //time verification
-  const currentTime = new Date().toLocaleTimeString();
-  const startTime = "04:00:00";
-  const endTime = "8:00:00";
-
-  const isWithinTimeRange =
-    currentTime >= startTime && currentTime <= endTime;
-
   const mappingTable = {
     Z: "0",
     X: "1",
@@ -303,7 +295,6 @@ function Scan() {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center">
-    {isWithinTimeRange ? (
       <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
         <QrReader
           onResult={async (result) => {
@@ -337,13 +328,8 @@ function Scan() {
           </ul>
         </div>
       </div>
-    ) : (
-      <p className="text-xl font-bold text-red-500">
-        QR scanner only works between {startTime} and {endTime}
-      </p>
-    )}
-  </div>
-);
+    </div>
+  );
 
 }
 
