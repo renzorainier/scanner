@@ -15,7 +15,7 @@ function Scan() {
     const interval = setInterval(() => {
       const now = new Date();
       const allowedStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 4, 0, 0); // 9:00 AM
-      const allowedEndTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0, 0); // 5:00 PM
+      const allowedEndTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 19, 0, 0); // 5:00 PM
 
       if (now >= allowedStartTime && now <= allowedEndTime) {
         setScannerEnabled(true);
@@ -337,7 +337,7 @@ function Scan() {
         />
       ) : (
         <p className="text-xl font-bold text-red-500">
-          Scanner is only available from 9:00 AM to 5:00 PM
+          Scanner is only available from 4:00 AM to 9:00 AM
         </p>
       )}
       <p className="text-xl font-bold mt-6">Scan result:</p>
