@@ -347,7 +347,7 @@ function Scan() {
         />
         <div className="flex flex-col items-center justify-center mt-6">
           <p className="text-xl font-bold">Scan Result</p>
-          <p className="text-2xl text-blue-500">{data}</p>
+          <p className="text-2xl text-blue-200">{data}</p>
         </div>
         <div className="flex flex-col items-center justify-center mt-8">
           <h1 className="text-3xl font-semibold">
