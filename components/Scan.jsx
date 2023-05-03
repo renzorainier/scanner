@@ -8,6 +8,25 @@ function Scan() {
   const [data, setData] = useState("");
   const [log, setLog] = useState([]);
   const [scannedCodes, setScannedCodes] = useState(new Set());
+  const [scannerEnabled, setScannerEnabled] = useState(false);
+
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const now = new Date();
+      const allowedStartTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 4, 0, 0); // 9:00 AM
+      const allowedEndTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0, 0); // 5:00 PM
+
+      if (now >= allowedStartTime && now <= allowedEndTime) {
+        setScannerEnabled(true);
+      } else {
+        setScannerEnabled(false);
+      }
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
 
   const mappingTable = {
     Z: "0",
