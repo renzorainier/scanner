@@ -314,7 +314,8 @@ function Scan() {
 
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center">
-      <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
+    <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
+      {scannerEnabled ? (
         <QrReader
           onResult={async (result) => {
             if (!!result) {
@@ -334,22 +335,26 @@ function Scan() {
           constraints={{ facingMode: "environment" }}
           style={{ width: "100%", height: "100%" }}
         />
-        <p className="text-xl font-bold mt-6">Scan result:</p>
-        <p className="text-xl">{data}</p>
-        <h1 className="text-3xl font-semibold mt-8">Recent Scans</h1>
-        <div className="bg-white rounded-lg shadow-lg mt-6 w-full overflow-y-scroll">
-          <ul className="text-gray-500 divide-y divide-gray-300">
-            {log.map((entry, index) => (
-              <li key={entry.id} className="py-4 px-6">
-                <span className="block font-semibold">{entry.info}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      ) : (
+        <p className="text-xl font-bold text-red-500">
+          Scanner is only available from 9:00 AM to 5:00 PM
+        </p>
+      )}
+      <p className="text-xl font-bold mt-6">Scan result:</p>
+      <p className="text-xl">{data}</p>
+      <h1 className="text-3xl font-semibold mt-8">Recent Scans</h1>
+      <div className="bg-white rounded-lg shadow-lg mt-6 w-full overflow-y-scroll">
+        <ul className="text-gray-500 divide-y divide-gray-300">
+          {log.map((entry, index) => (
+            <li key={entry.id} className="py-4 px-6">
+              <span className="block font-semibold">{entry.info}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
-  );
-
+  </div>
+);
 }
 
 export default Scan;
