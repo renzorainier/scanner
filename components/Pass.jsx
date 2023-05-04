@@ -12,7 +12,7 @@ function PasswordProtectedContent() {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     // Replace this with your actual password check logic
-    if (password === "password") {
+    if (password === "scansscas") {
       setShowContent(true);
     }
   };
