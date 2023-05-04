@@ -29,7 +29,7 @@ function PasswordProtectedContent() {
               htmlFor="password"
               className="block font-medium text-gray-700 mb-2"
             >
-              Password:
+              Enter password:
             </label>
             <input
               type="password"
