@@ -113,7 +113,7 @@ function Scan() {
           startTime: "6:00:00",
         },
         Wednesday: {
-          startTime: "6:00:00",
+          startTime: "6:30:00",
         },
         Thursday: {
           startTime: "6:00:00",
@@ -152,6 +152,29 @@ function Scan() {
         },
       },
       "1D": {
+        Monday: {
+          startTime: "6:00:00",
+        },
+        Tuesday: {
+          startTime: "6:00:00",
+        },
+        Wednesday: {
+          startTime: "6:00:00",
+        },
+        Thursday: {
+          startTime: "6:00:00",
+        },
+        Friday: {
+          startTime: "6:00:00",
+        },
+        Saturday: {
+          startTime: "6:00:00",
+        },
+        Sunday: {
+          startTime: "6:00:00",
+        },
+      },
+      "2A": {
         Monday: {
           startTime: "6:00:00",
         },
