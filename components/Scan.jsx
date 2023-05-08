@@ -25,7 +25,7 @@ function Scan() {
         now.getFullYear(),
         now.getMonth(),
         now.getDate(),
-        9,
+        13,
         0,
         0
       ); // 5:00 PM
