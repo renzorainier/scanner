@@ -10,7 +10,7 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
   const [scannerEnabled, setScannerEnabled] = useState(false);
 
-  const [bgColor, setBgColor] = useState("gray");
+  const [bgColor, setBgColor] = useState("");
 
   const now = new Date();
   const startTime = new Date(
@@ -200,7 +200,7 @@ function Scan() {
   const updateBackgroundColor = (color) => {
     setBgColor(color);
     setTimeout(() => {
-      setBgColor("gray");
+      setBgColor("");
     }, 1000);
   };
 
