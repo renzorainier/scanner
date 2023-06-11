@@ -206,8 +206,7 @@ function Scan() {
         const { name, time } = studentInfo;
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
-          setBgColor('green'); // Set background color to green
-      setTimeout(() => setBgColor('gray-100'), 1000); // Reset background color after 1 second
+        
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
