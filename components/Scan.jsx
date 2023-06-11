@@ -349,11 +349,9 @@ function Scan() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div
+          <div className="margin-auto"
             style={{
               backgroundColor: bgColor,
-              width: "100%",
-              height: "100%",
             }}
           >
             <QrReader
