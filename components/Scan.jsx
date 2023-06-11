@@ -12,7 +12,6 @@ function Scan() {
 
   const [bgColor, setBgColor] = useState("gray");
 
-
   const now = new Date();
   const startTime = new Date(
     now.getFullYear(),
@@ -198,15 +197,12 @@ function Scan() {
     return () => clearTimeout(timeoutId);
   }, [data]);
 
-
   const updateBackgroundColor = (color) => {
     setBgColor(color);
     setTimeout(() => {
       setBgColor("gray");
     }, 1000);
   };
-
-
 
   const handleMarkPresent = async (code) => {
     if (scannedCodes.has(code)) {
@@ -226,7 +222,6 @@ function Scan() {
       updateBackgroundColor("red"); // Invalid QR code, set background color to red
     }
   };
-
 
   const markStudentPresent = async (code) => {
     const [strand, section, id, lrn] = code.split("-");
@@ -354,26 +349,32 @@ function Scan() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div >
-          <QrReader
-            onResult={async (result) => {
-              if (!!result) {
-                const code = result.text;
-                if (code !== lastScanned) {
-                  const decodedCode = code
-                    .split("")
-                    .map((char) => mappingTable[char] || "")
-                    .join("");
-                  setLastScanned(code);
-                  handleMarkPresent(decodedCode);
-                  // console.log(decodedCode);
-                  // console.log(result);
-                }
-              }
+          <div
+            style={{
+              backgroundColor: bgColor,
+              width: "100%",
+              height: "100%",
             }}
-            constraints={{ facingMode: "environment" }}
-            style={{ width: "100%", height: "100%" }}
-          />
+          >
+            <QrReader
+              onResult={async (result) => {
+                if (!!result) {
+                  const code = result.text;
+                  if (code !== lastScanned) {
+                    const decodedCode = code
+                      .split("")
+                      .map((char) => mappingTable[char] || "")
+                      .join("");
+                    setLastScanned(code);
+                    handleMarkPresent(decodedCode);
+                    // console.log(decodedCode);
+                    // console.log(result);
+                  }
+                }
+              }}
+              constraints={{ facingMode: "environment" }}
+              style={{ width: "100%", height: "100%" }}
+            />
           </div>
 
           <div className="flex flex-col items-center justify-center mt-6">
@@ -384,7 +385,7 @@ function Scan() {
           </div>
 
           <div className="flex flex-col items-center justify-center mt-8">
-          {bgColor}
+            {bgColor}
             <h1 className="text-3xl font-semibold">
               Recent{" "}
               <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
