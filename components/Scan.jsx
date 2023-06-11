@@ -384,6 +384,7 @@ function Scan() {
           </div>
 
           <div className="flex flex-col items-center justify-center mt-8">
+          {bgColor}
             <h1 className="text-3xl font-semibold">
               Recent{" "}
               <span className="bg-gradient-to-r from-blue-400 to-violet-400 text-transparent bg-clip-text">
