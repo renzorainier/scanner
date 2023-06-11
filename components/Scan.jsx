@@ -354,7 +354,7 @@ function Scan() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div className={`bg-${bgColor}-100`}>
+          <div className={`bg-${bgColor}-900`}>
           <QrReader
             onResult={async (result) => {
               if (!!result) {
