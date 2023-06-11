@@ -202,7 +202,7 @@ function Scan() {
   const updateBackgroundColor = (color) => {
     setBgColor(color);
     setTimeout(() => {
-      setBgColor("gray");
+      setBgColor("blue");
     }, 1000);
   };
 
