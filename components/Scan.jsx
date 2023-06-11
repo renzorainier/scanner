@@ -349,7 +349,7 @@ function Scan() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div className="margin-auto"
+          <div className="rounded-lg"
             style={{
               backgroundColor: bgColor,
             }}
@@ -371,7 +371,7 @@ function Scan() {
                 }
               }}
               constraints={{ facingMode: "environment" }}
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "200%", height: "200%" }}
             />
           </div>
 
