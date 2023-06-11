@@ -215,7 +215,7 @@ function Scan() {
         const { name, time } = studentInfo;
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
-        updateBackgroundColor("#4D96FF"); // Valid QR code, set background color to green
+        updateBackgroundColor("blue-400"); // Valid QR code, set background color to green
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
