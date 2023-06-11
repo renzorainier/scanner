@@ -10,6 +10,9 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
   const [scannerEnabled, setScannerEnabled] = useState(false);
 
+  const [bgColor, setBgColor] = useState("gray");
+
+
   const now = new Date();
   const startTime = new Date(
     now.getFullYear(),
@@ -206,7 +209,7 @@ function Scan() {
         const { name, time } = studentInfo;
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
-        
+
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
