@@ -10,7 +10,7 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
   const [scannerEnabled, setScannerEnabled] = useState(false);
 
-  const [bgColor, setBgColor] = useState("gray");
+  const [bgColor, setBgColor] = useState("blue");
 
 
   const now = new Date();
@@ -352,9 +352,9 @@ function Scan() {
 
   if (now >= startTime && now <= endTime) {
     return (
-      <div className="bg-gray-100 flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div className={`bg-${bgColor}-900`}>
+          <div className={`bg-${bgColor}-100`}>
           <QrReader
             onResult={async (result) => {
               if (!!result) {
