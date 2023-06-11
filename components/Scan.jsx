@@ -222,7 +222,6 @@ function Scan() {
       updateBackgroundColor("#EF5350"); // Invalid QR code, set background color to red
     }
   };
-
   const markStudentPresent = async (code) => {
     const [strand, section, id, lrn] = code.split("-");
     const sectionRef = doc(db, strand, section);
