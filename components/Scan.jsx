@@ -198,6 +198,16 @@ function Scan() {
     return () => clearTimeout(timeoutId);
   }, [data]);
 
+
+  const updateBackgroundColor = (color) => {
+    setBgColor(color);
+    setTimeout(() => {
+      setBgColor("gray");
+    }, 1000);
+  };
+
+
+
   const handleMarkPresent = async (code) => {
     if (scannedCodes.has(code)) {
       console.log(`Student ${code} has already been scanned`);
@@ -209,12 +219,14 @@ function Scan() {
         const { name, time } = studentInfo;
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
-
+        updateBackgroundColor("green"); // Valid QR code, set background color to green
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
+      updateBackgroundColor("red"); // Invalid QR code, set background color to red
     }
   };
+
 
   const markStudentPresent = async (code) => {
     const [strand, section, id, lrn] = code.split("-");
