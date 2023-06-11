@@ -342,6 +342,7 @@ function Scan() {
     return (
       <div className="bg-gray-100 flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
+          <div classnma >
           <QrReader
             onResult={async (result) => {
               if (!!result) {
@@ -361,6 +362,8 @@ function Scan() {
             constraints={{ facingMode: "environment" }}
             style={{ width: "100%", height: "100%" }}
           />
+          </div>
+
           <div className="flex flex-col items-center justify-center mt-6">
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
             <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
