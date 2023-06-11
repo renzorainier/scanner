@@ -371,7 +371,7 @@ function Scan() {
                 }
               }}
               constraints={{ facingMode: "environment" }}
-              style={{ width: "200%", height: "200%" }}
+              style={{ width: "100%", height: "100%" }}
             />
           </div>
 
