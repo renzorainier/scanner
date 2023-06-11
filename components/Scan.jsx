@@ -219,7 +219,7 @@ function Scan() {
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
-      updateBackgroundColor("#FF0000"); // Invalid QR code, set background color to red
+      updateBackgroundColor("#EF5350"); // Invalid QR code, set background color to red
     }
   };
 
