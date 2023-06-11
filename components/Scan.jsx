@@ -216,12 +216,20 @@ function Scan() {
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
         updateBackgroundColor("#42A5F5"); // Valid QR code, set background color to green
+        playSoundEffect("success.mp3"); // Play success sound effect
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
       updateBackgroundColor("#EF5350"); // Invalid QR code, set background color to red
+      playSoundEffect("error.mp3"); // Play error sound effect
     }
   };
+
+  const playSoundEffect = (soundFile) => {
+    const audio = new Audio(soundFile);
+    audio.play();
+  };
+
 
   const markStudentPresent = async (code) => {
     const [strand, section, id, lrn] = code.split("-");
