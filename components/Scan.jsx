@@ -349,7 +349,7 @@ function Scan() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div className="rounded-lg"
+          <div className="rounded-lg "
             style={{
               backgroundColor: bgColor,
             }}
