@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
+import sound from "./success.mp3"
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
