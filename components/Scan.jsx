@@ -3,7 +3,7 @@ import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
 import good from "./good.wav";
-import error from "./error.wav";
+// import error from "./error.wav";
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
