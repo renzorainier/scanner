@@ -31,6 +31,9 @@ function Scan() {
     0
   );
 
+
+function play( )
+
   const mappingTable = {
     Z: "0",
     X: "1",
