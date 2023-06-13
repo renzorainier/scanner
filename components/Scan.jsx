@@ -27,7 +27,7 @@ function Scan() {
     now.getFullYear(),
     now.getMonth(),
     now.getDate(),
-    13,
+    24,
     0,
     0
   );
@@ -389,8 +389,6 @@ function Scan() {
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
             <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
               <p className="text-base text-gray-600 font-semibold">{data}</p>
-
-
             </div>
           </div>
 
