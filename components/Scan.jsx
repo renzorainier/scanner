@@ -222,6 +222,7 @@ function Scan() {
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
         updateBackgroundColor("#42A5F5"); // Valid QR code, set background color to green
+        play()
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
