@@ -381,7 +381,7 @@ function Scan() {
             />
           </div>
           <div>
-            <button onclick={error}>playu</button>
+            <button onClick={error}>playu</button>
           </div>
           <div className="flex flex-col items-center justify-center mt-6">
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
