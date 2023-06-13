@@ -12,35 +12,32 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
   const [scannerEnabled, setScannerEnabled] = useState(false);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const now = new Date();
-      const allowedStartTime = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        4,
-        0,
-        0
-      ); // 9:00 AM
-      const allowedEndTime = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate(),
-        13,
-        0,
-        0
-      ); // 5:00 PM
+<<<<<<< HEAD
+  const [bgColor, setBgColor] = useState("");
 
-      if (now >= allowedStartTime && now <= allowedEndTime) {
-        setScannerEnabled(true);
-      } else {
-        setScannerEnabled(false);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
+=======
+>>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
+  const now = new Date();
+  const startTime = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+    5,
+    0,
+    0
+  );
+  const endTime = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+<<<<<<< HEAD
+    13,
+=======
+    14,
+>>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
+    0,
+    0
+  );
 
   const mappingTable = {
     Z: "0",
@@ -364,34 +361,71 @@ function Scan() {
     }
   }, [data, lastScanned, log]);
 
-  return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center">
-      <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-        <QrReader
-          onResult={async (result) => {
-            if (!!result) {
-              const code = result.text;
-              if (code !== lastScanned) {
-                const decodedCode = code
-                  .split("")
-                  .map((char) => mappingTable[char] || "")
-                  .join("");
-                setLastScanned(code);
-                handleMarkPresent(decodedCode);
-                // console.log(decodedCode);
-                // console.log(result);
-              }
-            }
-          }}
-          constraints={{ facingMode: "environment" }}
-          style={{ width: "100%", height: "100%" }}
-        />
-        <div className="flex flex-col items-center justify-center mt-6">
-          <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
-          <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
-            <p className="text-base text-blue-600 font-semibold">{data}</p>
+  if (now >= startTime && now <= endTime) {
+    return (
+<<<<<<< HEAD
+      <div className="flex flex-col items-center justify-center">
+        <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
+          <div
+            className="rounded-lg "
+            style={{
+              backgroundColor: bgColor,
+            }}
+          >
+            <QrReader
+              onResult={async (result) => {
+                if (!!result) {
+                  const code = result.text;
+                  if (code !== lastScanned) {
+                    const decodedCode = code
+                      .split("")
+                      .map((char) => mappingTable[char] || "")
+                      .join("");
+                    setLastScanned(code);
+                    handleMarkPresent(decodedCode);
+                    // console.log(decodedCode);
+                    // console.log(result);
+                  }
+                }
+              }}
+              constraints={{ facingMode: "environment" }}
+              style={{ width: "100%", height: "100%" }}
+            />
           </div>
-        </div>
+
+          <div className="flex flex-col items-center justify-center mt-6">
+            <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
+            <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
+              <p className="text-base text-gray-600 font-semibold">{data}</p>
+=======
+      <div className="bg-gray-100 flex flex-col items-center justify-center">
+        <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
+          <QrReader
+            onResult={async (result) => {
+              if (!!result) {
+                const code = result.text;
+                if (code !== lastScanned) {
+                  const decodedCode = code
+                    .split("")
+                    .map((char) => mappingTable[char] || "")
+                    .join("");
+                  setLastScanned(code);
+                  handleMarkPresent(decodedCode);
+                  // console.log(decodedCode);
+                  // console.log(result);
+                }
+              }
+            }}
+            constraints={{ facingMode: "environment" }}
+            style={{ width: "100%", height: "100%" }}
+          />
+          <div className="flex flex-col items-center justify-center mt-6">
+            <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
+            <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
+              <p className="text-base text-blue-600 font-semibold">{data}</p>
+>>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
+            </div>
+          </div>
 
           <div className="flex flex-col items-center justify-center mt-8">
             <h1 className="text-3xl font-semibold">
