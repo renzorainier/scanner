@@ -356,7 +356,6 @@ function Scan() {
 
   if (now >= startTime && now <= endTime) {
     return (
-<<<<<<< HEAD
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
           <div
@@ -390,33 +389,8 @@ function Scan() {
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
             <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
               <p className="text-base text-gray-600 font-semibold">{data}</p>
-=======
-      <div className="bg-gray-100 flex flex-col items-center justify-center">
-        <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <QrReader
-            onResult={async (result) => {
-              if (!!result) {
-                const code = result.text;
-                if (code !== lastScanned) {
-                  const decodedCode = code
-                    .split("")
-                    .map((char) => mappingTable[char] || "")
-                    .join("");
-                  setLastScanned(code);
-                  handleMarkPresent(decodedCode);
-                  // console.log(decodedCode);
-                  // console.log(result);
-                }
-              }
-            }}
-            constraints={{ facingMode: "environment" }}
-            style={{ width: "100%", height: "100%" }}
-          />
-          <div className="flex flex-col items-center justify-center mt-6">
-            <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
-            <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
-              <p className="text-base text-blue-600 font-semibold">{data}</p>
->>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
+
+
             </div>
           </div>
 
