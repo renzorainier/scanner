@@ -33,7 +33,7 @@ function Scan() {
   );
 
   function play() {
-    new Audio(sound).play();
+    new Audio(good).play();
   }
 
   const mappingTable = {
