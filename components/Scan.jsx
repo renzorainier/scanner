@@ -31,8 +31,9 @@ function Scan() {
     0
   );
 
-
-function play( )
+function play() {
+  new Audio(sound).play()
+}
 
   const mappingTable = {
     Z: "0",
