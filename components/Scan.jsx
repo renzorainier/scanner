@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { QrReader } from "react-qr-reader";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./firebase.js";
-import good from "./good.wav"
-import error from "./error.wav"
+import good from "./good.wav";
+import error from "./error.wav";
 
 function Scan() {
   const [lastScanned, setLastScanned] = useState(null);
@@ -32,9 +32,9 @@ function Scan() {
     0
   );
 
-function play() {
-  new Audio(sound).play()
-}
+  function play() {
+    new Audio(sound).play();
+  }
 
   const mappingTable = {
     Z: "0",
@@ -354,7 +354,8 @@ function play() {
     return (
       <div className="flex flex-col items-center justify-center">
         <div className="bg-white rounded-lg shadow-md p-6 w-full h-full ">
-          <div className="rounded-lg "
+          <div
+            className="rounded-lg "
             style={{
               backgroundColor: bgColor,
             }}
@@ -379,7 +380,9 @@ function play() {
               style={{ width: "100%", height: "100%" }}
             />
           </div>
-
+          <div>
+            <button onclick={good}>playu</button>
+          </div>
           <div className="flex flex-col items-center justify-center mt-6">
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
             <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
