@@ -32,7 +32,6 @@ function Scan() {
     0
   );
 
-
   const mappingTable = {
     Z: "0",
     X: "1",
@@ -207,6 +206,7 @@ function Scan() {
     }, 1000);
   };
 
+  
   const handleMarkPresent = async (code) => {
     if (scannedCodes.has(code)) {
       console.log(`Student ${code} has already been scanned`);
@@ -219,12 +219,18 @@ function Scan() {
         setData(`${name} | ${time}`);
         setScannedCodes(new Set(scannedCodes.add(code)));
         updateBackgroundColor("#42A5F5"); // Valid QR code, set background color to green
-        // play()
+        playAudio(success); // Play success audio
       }
     } catch (e) {
       console.error("Error marking student as present: ", e);
       updateBackgroundColor("#EF5350"); // Invalid QR code, set background color to red
+      playAudio(error); // Play error audio
     }
+  };
+
+  const playAudio = (audioFile) => {
+    const audio = new Audio(audioFile);
+    audio.play();
   };
   const markStudentPresent = async (code) => {
     const [strand, section, id, lrn] = code.split("-");
@@ -378,7 +384,7 @@ function Scan() {
               style={{ width: "100%", height: "100%" }}
             />
           </div>
-    
+
           <div className="flex flex-col items-center justify-center mt-6">
             <p className="text-lg font-bold text-gray-600 mb-2">Scan Result:</p>
             <div className="flex items-center justify-center bg-white rounded-lg shadow-md p-4">
