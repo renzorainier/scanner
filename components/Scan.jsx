@@ -12,11 +12,8 @@ function Scan() {
   const [scannedCodes, setScannedCodes] = useState(new Set());
   const [scannerEnabled, setScannerEnabled] = useState(false);
 
-<<<<<<< HEAD
   const [bgColor, setBgColor] = useState("");
 
-=======
->>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
   const now = new Date();
   const startTime = new Date(
     now.getFullYear(),
@@ -30,11 +27,7 @@ function Scan() {
     now.getFullYear(),
     now.getMonth(),
     now.getDate(),
-<<<<<<< HEAD
     13,
-=======
-    14,
->>>>>>> f392e5967217d24036c0094a5de61dc5f7434f94
     0,
     0
   );
