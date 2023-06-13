@@ -27,7 +27,7 @@ function Scan() {
     now.getFullYear(),
     now.getMonth(),
     now.getDate(),
-    24,
+    13,
     0,
     0
   );
@@ -206,7 +206,7 @@ function Scan() {
     }, 1000);
   };
 
-  
+
   const handleMarkPresent = async (code) => {
     if (scannedCodes.has(code)) {
       console.log(`Student ${code} has already been scanned`);
